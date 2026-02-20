@@ -1,27 +1,188 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Kiyotaka Bio</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>rlyank · white aesthetic</title>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Clean fonts: Inter for body, Playfair for headings -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<audio autoplay loop controls>
-  <source src="music.mp3" type="audio/mpeg">
-</audio>
-
-<div class="card">
-  <img src="https://media.tenor.com/W8k3kz0Zx0AAAAAC/ayanokoji.gif" class="gif">
-
-  <h1>Kiyotaka Ayanokoji</h1>
-  <p>"Humans are tools. I will use everything to win."</p>
-
-  <div class="links">
-    <a href="https://discord.com">Discord</a>
-    <a href="https://instagram.com">Instagram</a>
-    <a href="https://youtube.com">YouTube</a>
+  <!-- Animated background pigeons (multiple emojis with different animations) -->
+  <div class="pigeon-container">
+    <div class="pigeon pigeon-1">🕊️</div>
+    <div class="pigeon pigeon-2">🕊️</div>
+    <div class="pigeon pigeon-3">🕊️</div>
+    <div class="pigeon pigeon-4">🕊️</div>
+    <div class="pigeon pigeon-5">🕊️</div>
+    <div class="pigeon pigeon-6">🕊️</div>
+    <div class="pigeon pigeon-7">🕊️</div>
+    <div class="pigeon pigeon-8">🕊️</div>
+    <div class="pigeon pigeon-9">🕊️</div>
+    <div class="pigeon pigeon-10">🕊️</div>
+    <div class="pigeon pigeon-11">🕊️</div>
+    <div class="pigeon pigeon-12">🕊️</div>
   </div>
-</div>
 
+  <div class="container">
+    <div class="profile-card">
+
+      <!-- === CROW GIF SECTION (flock of birds) === -->
+      <div class="image-section">
+        <div class="image-container">
+          <!-- Flock of crows GIF from Tenor -->
+          <img class="crow-gif" src="https://media.tenor.com/7292810/cuervo-cuervos.gif" alt="Flock of crows flying">
+          <!-- subtle minimal label -->
+          <div class="image-label">⦿</div>
+        </div>
+        <p class="image-caption">rlyank · observer</p>
+      </div>
+
+      <!-- === YOUR PHILOSOPHICAL TEXT (pure black on white) === -->
+      <div class="philosophy-section">
+        <div class="philosophy-text">
+          <p class="first-paragraph">Equality is nothing more than a beautiful lie created to give comfort to those who refuse to struggle. No one is born superior or inferior, yet the difference between humans slowly appears as time passes, shaped by discipline, knowledge, and the choices they make every day.</p>
+          
+          <p class="second-paragraph">People believe emotions make them human, but in reality emotions only make them weak, because feelings distort logic and sympathy clouds judgment. The world does not run on kindness or fairness; it runs on efficiency, strategy, and control. Humans are tools by nature, shaped by their environment and sharpened by experience, and those who understand this truth gain power over those who live blindly inside illusions.</p>
+          
+          <p class="third-paragraph">Every relationship is a calculation, every smile hides an intention, and every action carries a purpose, whether people admit it or not. Talent without effort is meaningless, and effort without direction is wasted energy. Those who rely on luck will always remain beneath those who rely on preparation, and those who complain about injustice will never understand the structure of reality.</p>
+          
+          <p class="fourth-paragraph">True strength is not shown through violence or loud words, but through the ability to remain calm in chaos and think clearly while others drown in fear. Knowledge becomes a weapon, silence becomes armor, and patience becomes dominance.</p>
+          
+          <p class="fifth-paragraph">Failure is not tragedy; it is simply evidence of flawed strategy. The weak blame circumstances, the average blame others, but the intelligent redesign themselves. In the end, victory does not belong to the most emotional, the most hopeful, or the most innocent, but to the one who understands human nature deeply and uses it without hesitation.</p>
+          
+          <p class="conclusion-paragraph">This is the law of growth, the law of survival, and the law of evolution in a world that pretends to be equal while rewarding only those who are prepared to rise above it.</p>
+        </div>
+      </div>
+
+      <!-- === BACKGROUND MUSIC (AUTOPLAY, UNMUTE ON CLICK) === -->
+      <audio id="bgMusic" loop autoplay muted preload="auto">
+        <source src="captcha.mp3" type="audio/mpeg">
+      </audio>
+
+      <!-- minimal music indicator (barely visible) -->
+      <div class="music-indicator" id="musicIndicator">
+        <span class="indicator-dot"></span>
+        <span class="indicator-text">audio</span>
+      </div>
+
+      <!-- === SOCIAL BUTTONS (your actual links, minimal style) === -->
+      <div class="social-section">
+        <a href="https://discord.gg/2PRexHBK" class="social-link discord" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord"></i><span class="link-label">discord</span></a>
+        <a href="https://www.instagram.com/rlyank888?igsh=am10d2EwZ29tY2Fy" class="social-link instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i><span class="link-label">instagram</span></a>
+        <a href="https://youtube.com/@rlyank8" class="social-link youtube" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i><span class="link-label">youtube</span></a>
+      </div>
+
+      <!-- footer (minimal) -->
+      <div class="card-footer">rlyank · mmxxv</div>
+    </div>
+  </div>
+
+  <script>
+    /**
+     * BACKGROUND MUSIC CONTROLLER
+     * Automatically starts muted, unmutes on first user interaction
+     * Pure JavaScript, no dependencies
+     */
+    (function() {
+      'use strict';
+      
+      // Get DOM elements
+      const audioElement = document.getElementById('bgMusic');
+      const musicIndicator = document.getElementById('musicIndicator');
+      
+      // Exit if audio element doesn't exist
+      if (!audioElement) return;
+      
+      // Configuration
+      const VOLUME_LEVEL = 0.35; // 35% volume - subtle background
+      
+      // Set initial volume
+      audioElement.volume = VOLUME_LEVEL;
+      
+      // State tracking
+      let isMusicActivated = false;
+      let activationAttempts = 0;
+      const MAX_ACTIVATION_ATTEMPTS = 3;
+      
+      /**
+       * Activate music - unmute and play
+       */
+      function activateBackgroundMusic() {
+        // Prevent multiple activations
+        if (isMusicActivated) return;
+        
+        // Increment attempt counter
+        activationAttempts++;
+        
+        // Unmute
+        audioElement.muted = false;
+        
+        // Attempt to play
+        const playPromise = audioElement.play();
+        
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => {
+              // Successfully playing
+              isMusicActivated = true;
+              musicIndicator.classList.add('active');
+              
+              // Remove event listeners after activation
+              document.removeEventListener('click', activateBackgroundMusic);
+              document.removeEventListener('touchstart', activateBackgroundMusic);
+              document.removeEventListener('keydown', activateBackgroundMusic);
+              
+              // Log success (silent in production)
+              console.debug('Audio activated successfully');
+            })
+            .catch(error => {
+              // Play failed
+              console.debug('Audio activation failed:', error);
+              
+              // If under max attempts, keep listeners active
+              if (activationAttempts >= MAX_ACTIVATION_ATTEMPTS) {
+                // Too many failures, show indicator but don't retry
+                musicIndicator.classList.add('failed');
+              }
+            });
+        }
+      }
+      
+      /**
+       * Handle audio errors (file missing, etc.)
+       */
+      function handleAudioError() {
+        console.warn('Audio file missing or unsupported - captcha.mp3 not found');
+        musicIndicator.classList.add('missing');
+        musicIndicator.setAttribute('title', 'audio file missing');
+      }
+      
+      // Add event listeners for first interaction
+      document.addEventListener('click', activateBackgroundMusic);
+      document.addEventListener('touchstart', activateBackgroundMusic);
+      document.addEventListener('keydown', activateBackgroundMusic);
+      
+      // Handle audio errors
+      audioElement.addEventListener('error', handleAudioError);
+      
+      // Handle successful load
+      audioElement.addEventListener('canplaythrough', () => {
+        musicIndicator.classList.remove('missing');
+      });
+      
+      // Reset indicator when audio ends (loops anyway, but just in case)
+      audioElement.addEventListener('ended', () => {
+        // Loop attribute handles this, but reset if needed
+        if (audioElement.loop) {
+          // Nothing to do
+        }
+      });
+      
+    })();
+  </script>
 </body>
 </html>

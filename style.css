@@ -1,40 +1,1158 @@
-body {
+/**
+ * =====================================================================
+ * PURE WHITE MINIMALIST STYLE - COMPLETE CSS DOCUMENTATION
+ * =====================================================================
+ * 
+ * DESIGN PHILOSOPHY:
+ * - Pure white background (#ffffff)
+ * - Pure black text (#000000) with various opacities
+ * - No colors except black, white, and greys
+ * - Extreme minimalism with high attention to typography
+ * - Animated background pigeons (🕊️) for subtle movement
+ * - Responsive from 320px to 2560px
+ * 
+ * FILE STRUCTURE:
+ * 1. CSS RESET & BASE STYLES
+ * 2. ANIMATED PIGEON BACKGROUND
+ * 3. CONTAINER & CARD LAYOUT
+ * 4. IMAGE SECTION (CROW GIF)
+ * 5. PHILOSOPHY TEXT SECTION
+ * 6. MUSIC INDICATOR
+ * 7. SOCIAL LINKS SECTION
+ * 8. FOOTER
+ * 9. RESPONSIVE BREAKPOINTS
+ * 10. UTILITY CLASSES & ANIMATIONS
+ * =====================================================================
+ */
+
+/* =====================================================================
+   1. CSS RESET & BASE STYLES
+   ===================================================================== */
+
+/* Universal reset - removes all default margins, paddings, and box sizing */
+*,
+*::before,
+*::after {
   margin: 0;
-  height: 100vh;
-  background: black;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Document level styles */
+html {
+  font-size: 16px; /* Base font size for rem units */
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Body styles - pure white background, black text */
+body {
+  background: #ffffff; /* Pure white background */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: #000000; /* Pure black text */
+  line-height: 1.6;
+  font-weight: 300;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow-x: hidden;
+  padding: 1rem;
+}
+
+/* =====================================================================
+   2. ANIMATED PIGEON BACKGROUND
+   ===================================================================== */
+
+/* Container for all animated pigeons */
+.pigeon-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* So clicks pass through to buttons */
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* Base pigeon style - all pigeons share these properties */
+.pigeon {
+  position: absolute;
+  font-size: 1.8rem;
+  opacity: 0.15; /* Very subtle - barely visible */
+  color: #000000;
+  filter: blur(0.3px);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Individual pigeon animations - each has unique path, speed, and delay */
+
+/* Pigeon 1 - slow diagonal fly from left to right */
+.pigeon-1 {
+  bottom: 10%;
+  left: -5%;
+  animation-name: flyDiagonal;
+  animation-duration: 42s;
+  animation-delay: 0s;
+  font-size: 2rem;
+  opacity: 0.12;
+}
+
+/* Pigeon 2 - fast horizontal fly */
+.pigeon-2 {
+  top: 20%;
+  left: -8%;
+  animation-name: flyHorizontal;
+  animation-duration: 28s;
+  animation-delay: 3s;
+  font-size: 1.6rem;
+  opacity: 0.1;
+}
+
+/* Pigeon 3 - slow vertical fly with curve */
+.pigeon-3 {
+  top: -5%;
+  right: 15%;
+  animation-name: flyVertical;
+  animation-duration: 35s;
+  animation-delay: 7s;
+  font-size: 2.2rem;
+  opacity: 0.08;
+}
+
+/* Pigeon 4 - diagonal opposite direction */
+.pigeon-4 {
+  bottom: 30%;
+  right: -5%;
+  animation-name: flyDiagonalReverse;
+  animation-duration: 38s;
+  animation-delay: 12s;
+  font-size: 1.7rem;
+  opacity: 0.15;
+}
+
+/* Pigeon 5 - very slow floating */
+.pigeon-5 {
+  top: 60%;
+  left: -10%;
+  animation-name: flyFloating;
+  animation-duration: 55s;
+  animation-delay: 5s;
+  font-size: 1.9rem;
+  opacity: 0.09;
+}
+
+/* Pigeon 6 - medium speed wave motion */
+.pigeon-6 {
+  top: 75%;
+  right: -7%;
+  animation-name: flyWave;
+  animation-duration: 32s;
+  animation-delay: 2s;
+  font-size: 1.5rem;
+  opacity: 0.11;
+}
+
+/* Pigeon 7 - high altitude slow */
+.pigeon-7 {
+  top: 5%;
+  left: 20%;
+  animation-name: flyDiagonal;
+  animation-duration: 48s;
+  animation-delay: 9s;
+  font-size: 1.8rem;
+  opacity: 0.07;
+}
+
+/* Pigeon 8 - fast low */
+.pigeon-8 {
+  bottom: 15%;
+  right: 20%;
+  animation-name: flyHorizontalReverse;
+  animation-duration: 25s;
+  animation-delay: 4s;
+  font-size: 2.1rem;
+  opacity: 0.13;
+}
+
+/* Pigeon 9 - erratic path */
+.pigeon-9 {
+  top: 40%;
+  left: 30%;
+  animation-name: flyErratic;
+  animation-duration: 45s;
+  animation-delay: 15s;
+  font-size: 1.6rem;
+  opacity: 0.1;
+}
+
+/* Pigeon 10 - slow circular */
+.pigeon-10 {
+  bottom: 50%;
+  left: 70%;
+  animation-name: flyCircle;
+  animation-duration: 60s;
+  animation-delay: 20s;
+  font-size: 1.7rem;
+  opacity: 0.08;
+}
+
+/* Pigeon 11 - very small, fast */
+.pigeon-11 {
+  top: 85%;
+  left: 40%;
+  animation-name: flyHorizontal;
+  animation-duration: 22s;
+  animation-delay: 8s;
+  font-size: 1.3rem;
+  opacity: 0.14;
+}
+
+/* Pigeon 12 - large, very slow */
+.pigeon-12 {
+  bottom: 70%;
+  right: 10%;
+  animation-name: flyDiagonal;
+  animation-duration: 70s;
+  animation-delay: 25s;
+  font-size: 2.4rem;
+  opacity: 0.06;
+}
+
+/* Keyframe animations for different flight patterns */
+
+/* Diagonal flight from left to right, bottom to top */
+@keyframes flyDiagonal {
+  0% {
+    transform: translate(-10vw, 110vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.15;
+  }
+  50% {
+    transform: translate(40vw, 50vh) rotate(5deg);
+    opacity: 0.2;
+  }
+  90% {
+    opacity: 0.1;
+  }
+  100% {
+    transform: translate(110vw, -10vh) rotate(10deg);
+    opacity: 0;
+  }
+}
+
+/* Horizontal flight left to right */
+@keyframes flyHorizontal {
+  0% {
+    transform: translateX(-20vw) translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.15;
+  }
+  50% {
+    transform: translateX(50vw) translateY(-5vh) rotate(3deg);
+    opacity: 0.2;
+  }
+  90% {
+    opacity: 0.1;
+  }
+  100% {
+    transform: translateX(120vw) translateY(2vh) rotate(6deg);
+    opacity: 0;
+  }
+}
+
+/* Horizontal reverse (right to left) */
+@keyframes flyHorizontalReverse {
+  0% {
+    transform: translateX(120vw) translateY(0) rotate(180deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.15;
+  }
+  50% {
+    transform: translateX(50vw) translateY(-8vh) rotate(183deg);
+    opacity: 0.2;
+  }
+  90% {
+    opacity: 0.1;
+  }
+  100% {
+    transform: translateX(-20vw) translateY(5vh) rotate(186deg);
+    opacity: 0;
+  }
+}
+
+/* Vertical flight bottom to top */
+@keyframes flyVertical {
+  0% {
+    transform: translateY(120vh) translateX(0) rotate(90deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.15;
+  }
+  50% {
+    transform: translateY(50vh) translateX(-10vw) rotate(95deg);
+    opacity: 0.2;
+  }
+  90% {
+    opacity: 0.1;
+  }
+  100% {
+    transform: translateY(-20vh) translateX(5vw) rotate(100deg);
+    opacity: 0;
+  }
+}
+
+/* Diagonal reverse (right to left, top to bottom) */
+@keyframes flyDiagonalReverse {
+  0% {
+    transform: translate(110vw, -10vh) rotate(180deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.15;
+  }
+  50% {
+    transform: translate(40vw, 40vh) rotate(185deg);
+    opacity: 0.2;
+  }
+  90% {
+    opacity: 0.1;
+  }
+  100% {
+    transform: translate(-10vw, 100vh) rotate(190deg);
+    opacity: 0;
+  }
+}
+
+/* Floating, drifting motion */
+@keyframes flyFloating {
+  0% {
+    transform: translate(-5vw, 100vh) scale(1);
+    opacity: 0;
+  }
+  20% {
+    transform: translate(20vw, 70vh) scale(1.1);
+    opacity: 0.1;
+  }
+  40% {
+    transform: translate(40vw, 50vh) scale(0.9);
+    opacity: 0.15;
+  }
+  60% {
+    transform: translate(60vw, 30vh) scale(1.05);
+    opacity: 0.1;
+  }
+  80% {
+    transform: translate(80vw, 15vh) scale(0.95);
+    opacity: 0.08;
+  }
+  100% {
+    transform: translate(110vw, -5vh) scale(1);
+    opacity: 0;
+  }
+}
+
+/* Wave-like motion */
+@keyframes flyWave {
+  0% {
+    transform: translate(120vw, 20vh) scale(1);
+    opacity: 0;
+  }
+  25% {
+    transform: translate(80vw, 5vh) scale(1.05);
+    opacity: 0.15;
+  }
+  50% {
+    transform: translate(40vw, 35vh) scale(0.95);
+    opacity: 0.2;
+  }
+  75% {
+    transform: translate(10vw, 15vh) scale(1.1);
+    opacity: 0.1;
+  }
+  100% {
+    transform: translate(-20vw, 40vh) scale(1);
+    opacity: 0;
+  }
+}
+
+/* Erratic, unpredictable motion */
+@keyframes flyErratic {
+  0% {
+    transform: translate(30vw, 120vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    transform: translate(10vw, 100vh) rotate(45deg);
+    opacity: 0.1;
+  }
+  25% {
+    transform: translate(60vw, 80vh) rotate(90deg);
+    opacity: 0.15;
+  }
+  40% {
+    transform: translate(20vw, 60vh) rotate(135deg);
+    opacity: 0.2;
+  }
+  55% {
+    transform: translate(80vw, 40vh) rotate(180deg);
+    opacity: 0.15;
+  }
+  70% {
+    transform: translate(30vw, 20vh) rotate(225deg);
+    opacity: 0.1;
+  }
+  85% {
+    transform: translate(70vw, 5vh) rotate(270deg);
+    opacity: 0.08;
+  }
+  100% {
+    transform: translate(40vw, -10vh) rotate(315deg);
+    opacity: 0;
+  }
+}
+
+/* Circular path */
+@keyframes flyCircle {
+  0% {
+    transform: translate(50vw, 50vh) rotate(0deg) translate(25vw) rotate(0deg);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  75% {
+    opacity: 0.1;
+  }
+  100% {
+    transform: translate(50vw, 50vh) rotate(360deg) translate(25vw) rotate(-360deg);
+    opacity: 0;
+  }
+}
+
+/* =====================================================================
+   3. CONTAINER & CARD LAYOUT
+   ===================================================================== */
+
+/* Main container - centers everything */
+.container {
+  width: 100%;
+  max-width: 780px; /* Optimal reading width for text */
+  margin: 2rem auto;
+  position: relative;
+  z-index: 2; /* Above pigeons */
+}
+
+/* Profile card - white with subtle grey border */
+.profile-card {
+  background: #ffffff;
+  border-radius: 2px; /* Almost no rounding - sharp minimal look */
+  padding: 3rem 2.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.08); /* Extremely subtle border */
+  box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.05); /* Barely visible shadow */
+  display: flex;
+  flex-direction: column;
+  gap: 2.8rem;
+  transition: box-shadow 0.2s ease;
+  position: relative;
+  background: rgba(255, 255, 255, 0.98); /* Slight opacity to let pigeons show through */
+  backdrop-filter: blur(1px); /* Minimal blur for depth */
+}
+
+/* Card hover effect - very subtle */
+.profile-card:hover {
+  box-shadow: 0 15px 40px -20px rgba(0, 0, 0, 0.08);
+}
+
+/* =====================================================================
+   4. IMAGE SECTION (CROW GIF)
+   ===================================================================== */
+
+/* Image section container */
+.image-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+/* Container for the GIF */
+.image-container {
+  position: relative;
+  width: 100%;
+  max-width: 650px; /* Wide enough for the crow GIF */
+  aspect-ratio: 498/252; /* Exact GIF aspect ratio from Tenor */
+  border: none;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+/* Subtle hover effect */
+.image-container:hover {
+  transform: scale(1.002); /* Almost imperceptible */
+}
+
+/* Crow GIF styling */
+.crow-gif {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  filter: grayscale(100%) contrast(105%) brightness(95%); /* Pure black and white */
+  mix-blend-mode: multiply; /* Blends with white background */
+  opacity: 0.9;
+}
+
+/* Minimal label (small dot) */
+.image-label {
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+  color: rgba(0, 0, 0, 0.15);
+  font-size: 1.2rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+/* Caption below image */
+.image-caption {
+  font-family: 'Inter', sans-serif;
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 0.7rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 0.6rem;
+  margin-top: 0.2rem;
+  font-weight: 300;
+}
+
+/* =====================================================================
+   5. PHILOSOPHY TEXT SECTION
+   ===================================================================== */
+
+/* Main text container */
+.philosophy-section {
+  width: 100%;
+  padding: 0.5rem 0;
+}
+
+/* Text container with proper spacing */
+.philosophy-text {
+  font-family: 'Inter', 'Georgia', serif;
+  color: #000000;
+  line-height: 1.8;
+  font-size: 0.95rem;
+  font-weight: 300;
+}
+
+/* Individual paragraphs with unique subtle styling */
+.philosophy-text p {
+  margin-bottom: 1.8rem;
+  text-align: left;
+  text-rendering: optimizeLegibility;
+  letter-spacing: 0.01em;
+  word-spacing: 0.5px;
+}
+
+/* First paragraph - slightly larger opening */
+.first-paragraph {
+  font-size: 1rem;
+  font-weight: 350;
+  line-height: 1.8;
+  padding-left: 0.5rem;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Second paragraph - standard */
+.second-paragraph {
+  /* Default styling */
+}
+
+/* Third paragraph - subtle indentation */
+.third-paragraph {
+  padding-left: 1rem;
+  border-left: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Fourth paragraph - emphasized slightly */
+.fourth-paragraph {
+  font-weight: 350;
+  font-style: normal;
+}
+
+/* Fifth paragraph - standard */
+.fifth-paragraph {
+  /* Default */
+}
+
+/* Conclusion paragraph - boldest */
+.conclusion-paragraph {
+  font-weight: 400;
+  font-size: 1rem;
+  padding-top: 1rem;
+  margin-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  letter-spacing: 0.02em;
+}
+
+/* =====================================================================
+   6. MUSIC INDICATOR (minimal)
+   ===================================================================== */
+
+/* Music indicator container */
+.music-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  color: rgba(0, 0, 0, 0.25);
+  font-size: 0.7rem;
+  border: none;
+  padding: 0.3rem 0;
+  width: fit-content;
+  margin: 0 auto;
+  background: transparent;
+  transition: opacity 0.2s ease;
+  opacity: 0.7;
+}
+
+/* Indicator dot (pulsing) */
+.indicator-dot {
+  width: 4px;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+/* Indicator text */
+.indicator-text {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 300;
+}
+
+/* Active state (when music unmuted) */
+.music-indicator.active {
+  opacity: 1;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.music-indicator.active .indicator-dot {
+  background: #000000;
+  animation: pulseDotActive 1.5s infinite;
+}
+
+/* Missing file state */
+.music-indicator.missing {
+  opacity: 0.2;
+  cursor: default;
+}
+
+/* Failed state */
+.music-indicator.failed {
+  opacity: 0.15;
+}
+
+/* Dot pulse animation */
+@keyframes pulseDot {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+}
+
+@keyframes pulseDotActive {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.8);
+  }
+}
+
+/* =====================================================================
+   7. SOCIAL LINKS SECTION (ultra minimal)
+   ===================================================================== */
+
+/* Social links container */
+.social-section {
   display: flex;
   justify-content: center;
+  gap: 2.5rem;
+  margin-top: 0.8rem;
+  flex-wrap: wrap;
+}
+
+/* Individual social link */
+.social-link {
+  display: inline-flex;
   align-items: center;
-  font-family: Arial;
-}
-
-.card {
-  background: #111;
-  padding: 20px;
-  border-radius: 15px;
-  text-align: center;
-  box-shadow: 0 0 25px cyan;
-}
-
-.gif {
-  width: 220px;
-  border-radius: 12px;
-}
-
-h1 {
-  color: cyan;
-}
-
-p {
-  color: white;
-}
-
-.links a {
-  display: inline-block;
-  margin: 10px;
-  padding: 8px 15px;
-  background: cyan;
-  color: black;
+  gap: 0.4rem;
+  color: rgba(0, 0, 0, 0.45);
+  font-size: 0.9rem;
   text-decoration: none;
-  border-radius: 10px;
+  transition: all 0.15s ease;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 0.2rem;
 }
+
+/* Social icon */
+.social-link i {
+  font-size: 1rem;
+  transition: transform 0.15s ease;
+}
+
+/* Link label (text) */
+.link-label {
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+/* Hover effect */
+.social-link:hover {
+  color: #000000;
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+}
+
+.social-link:hover i {
+  transform: translateY(-1px);
+}
+
+/* No brand colors - everything stays black/grey */
+.discord:hover,
+.instagram:hover,
+.youtube:hover {
+  color: #000000;
+}
+
+/* =====================================================================
+   8. FOOTER
+   ===================================================================== */
+
+.card-footer {
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.6rem;
+  color: rgba(0, 0, 0, 0.25);
+  letter-spacing: 3px;
+  margin-top: 0.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  text-transform: lowercase;
+}
+
+/* =====================================================================
+   9. RESPONSIVE BREAKPOINTS
+   ===================================================================== */
+
+/* Large desktop ( > 1200px ) */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 900px;
+  }
+  
+  .profile-card {
+    padding: 4rem 3.5rem;
+    gap: 3.2rem;
+  }
+  
+  .philosophy-text {
+    font-size: 1.05rem;
+    line-height: 1.9;
+  }
+  
+  .first-paragraph {
+    font-size: 1.1rem;
+  }
+  
+  .conclusion-paragraph {
+    font-size: 1.08rem;
+  }
+}
+
+/* Desktop ( 992px - 1199px ) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .container {
+    max-width: 820px;
+  }
+  
+  .profile-card {
+    padding: 3rem 2.8rem;
+  }
+}
+
+/* Tablet landscape ( 768px - 991px ) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .container {
+    max-width: 700px;
+  }
+  
+  .profile-card {
+    padding: 2.5rem 2.2rem;
+    gap: 2.5rem;
+  }
+  
+  .philosophy-text {
+    font-size: 0.95rem;
+  }
+}
+
+/* Tablet portrait ( 600px - 767px ) */
+@media (min-width: 600px) and (max-width: 767px) {
+  .container {
+    max-width: 540px;
+  }
+  
+  .profile-card {
+    padding: 2.2rem 1.8rem;
+    gap: 2.2rem;
+  }
+  
+  .image-container {
+    max-width: 500px;
+  }
+  
+  .philosophy-text {
+    font-size: 0.92rem;
+    line-height: 1.7;
+  }
+  
+  .social-section {
+    gap: 2rem;
+  }
+}
+
+/* Mobile large ( 480px - 599px ) */
+@media (min-width: 480px) and (max-width: 599px) {
+  .container {
+    max-width: 440px;
+  }
+  
+  .profile-card {
+    padding: 2rem 1.5rem;
+    gap: 2rem;
+  }
+  
+  .image-container {
+    max-width: 100%;
+  }
+  
+  .image-caption {
+    font-size: 0.6rem;
+    letter-spacing: 3px;
+  }
+  
+  .philosophy-text {
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+  
+  .philosophy-text p {
+    margin-bottom: 1.5rem;
+  }
+  
+  .third-paragraph {
+    padding-left: 0.5rem;
+  }
+  
+  .social-link {
+    font-size: 0.8rem;
+  }
+  
+  .link-label {
+    font-size: 0.6rem;
+  }
+}
+
+/* Mobile medium ( 400px - 479px ) */
+@media (min-width: 400px) and (max-width: 479px) {
+  .container {
+    max-width: 360px;
+  }
+  
+  .profile-card {
+    padding: 1.8rem 1.2rem;
+    gap: 1.8rem;
+  }
+  
+  .image-container {
+    max-width: 100%;
+  }
+  
+  .image-caption {
+    font-size: 0.55rem;
+    letter-spacing: 2px;
+  }
+  
+  .philosophy-text {
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+  
+  .philosophy-text p {
+    margin-bottom: 1.3rem;
+  }
+  
+  .conclusion-paragraph {
+    font-size: 0.88rem;
+  }
+  
+  .social-section {
+    gap: 1.2rem;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .social-link {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .music-indicator {
+    font-size: 0.6rem;
+  }
+}
+
+/* Mobile small ( 320px - 399px ) */
+@media (min-width: 320px) and (max-width: 399px) {
+  .container {
+    max-width: 300px;
+  }
+  
+  .profile-card {
+    padding: 1.5rem 1rem;
+    gap: 1.5rem;
+  }
+  
+  .image-container {
+    max-width: 100%;
+  }
+  
+  .image-caption {
+    font-size: 0.5rem;
+    letter-spacing: 2px;
+  }
+  
+  .philosophy-text {
+    font-size: 0.8rem;
+    line-height: 1.6;
+  }
+  
+  .philosophy-text p {
+    margin-bottom: 1.2rem;
+  }
+  
+  .first-paragraph {
+    padding-left: 0.3rem;
+  }
+  
+  .third-paragraph {
+    padding-left: 0.3rem;
+  }
+  
+  .conclusion-paragraph {
+    font-size: 0.82rem;
+    padding-top: 0.8rem;
+  }
+  
+  .social-section {
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .social-link {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.75rem;
+  }
+  
+  .music-indicator {
+    font-size: 0.55rem;
+  }
+}
+
+/* Very small devices ( < 320px ) */
+@media (max-width: 319px) {
+  body {
+    padding: 0.5rem;
+  }
+  
+  .container {
+    max-width: 100%;
+  }
+  
+  .profile-card {
+    padding: 1.2rem 0.8rem;
+    gap: 1.2rem;
+  }
+  
+  .image-container {
+    max-width: 100%;
+  }
+  
+  .image-caption {
+    font-size: 0.45rem;
+    letter-spacing: 1px;
+  }
+  
+  .philosophy-text {
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+  
+  .social-section {
+    gap: 0.8rem;
+    flex-direction: column;
+  }
+  
+  .social-link {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.7rem;
+  }
+  
+  .link-label {
+    font-size: 0.55rem;
+  }
+  
+  .card-footer {
+    font-size: 0.5rem;
+  }
+}
+
+/* Height-based adjustments for very short screens */
+@media (max-height: 600px) {
+  .profile-card {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    gap: 1.5rem;
+  }
+  
+  .image-container {
+    max-height: 180px;
+  }
+  
+  .pigeon {
+    opacity: 0.08; /* Even more subtle on short screens */
+  }
+}
+
+/* Print styles - if anyone prints */
+@media print {
+  body {
+    background: white;
+    padding: 0;
+  }
+  
+  .pigeon-container {
+    display: none;
+  }
+  
+  .profile-card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+  
+  .music-indicator,
+  .social-section {
+    display: none;
+  }
+}
+
+/* =====================================================================
+   10. UTILITY CLASSES & ADDITIONAL ANIMATIONS
+   ===================================================================== */
+
+/* Accessibility - reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .pigeon {
+    display: none; /* Hide animated pigeons if user prefers reduced motion */
+  }
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(0, 0, 0, 0.1);
+  color: #000000;
+}
+
+::-moz-selection {
+  background: rgba(0, 0, 0, 0.1);
+  color: #000000;
+}
+
+/* Focus styles for accessibility */
+a:focus-visible,
+button:focus-visible {
+  outline: 1px solid rgba(0, 0, 0, 0.3);
+  outline-offset: 2px;
+}
+
+/* Smooth scrolling for anchor links (if any) */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar (very subtle) */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* =====================================================================
+   END OF STYLESHEET
+   ===================================================================== */
