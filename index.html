@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>rlyank · white aesthetic</title>
-  <!-- Font Awesome for icons -->
+  <title>rlyank · white room</title>
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Clean fonts: Inter for body, Playfair for headings -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Animated background pigeons (multiple emojis with different animations) -->
+  <!-- Animated pigeons -->
   <div class="pigeon-container">
     <div class="pigeon pigeon-1">🕊️</div>
     <div class="pigeon pigeon-2">🕊️</div>
@@ -30,18 +30,16 @@
   <div class="container">
     <div class="profile-card">
 
-      <!-- === CROW GIF SECTION (flock of birds) === -->
+      <!-- === WHITE ROOM GIF (your link) === -->
       <div class="image-section">
         <div class="image-container">
-          <!-- Flock of crows GIF from Tenor -->
-          <img class="crow-gif" src="https://media.tenor.com/7292810/cuervo-cuervos.gif" alt="Flock of crows flying">
-          <!-- subtle minimal label -->
-          <div class="image-label">⦿</div>
+          <img class="white-room-gif" 
+               src="https://image2url.com/r2/default/gifs/1771594338820-934bf96e-0209-4f40-aa31-afcfa4746f6e.gif" 
+               alt="White room - Ayanokoji">
         </div>
-        <p class="image-caption">rlyank · observer</p>
       </div>
 
-      <!-- === YOUR PHILOSOPHICAL TEXT (pure black on white) === -->
+      <!-- === YOUR PHILOSOPHICAL TEXT === -->
       <div class="philosophy-section">
         <div class="philosophy-text">
           <p class="first-paragraph">Equality is nothing more than a beautiful lie created to give comfort to those who refuse to struggle. No one is born superior or inferior, yet the difference between humans slowly appears as time passes, shaped by discipline, knowledge, and the choices they make every day.</p>
@@ -58,130 +56,72 @@
         </div>
       </div>
 
-      <!-- === BACKGROUND MUSIC (AUTOPLAY, UNMUTE ON CLICK) === -->
-      <audio id="bgMusic" loop autoplay muted preload="auto">
+      <!-- === BACKGROUND MUSIC (scroll trigger) === -->
+      <audio id="bgMusic" loop preload="auto">
         <source src="captcha.mp3" type="audio/mpeg">
       </audio>
 
-      <!-- minimal music indicator (barely visible) -->
       <div class="music-indicator" id="musicIndicator">
         <span class="indicator-dot"></span>
-        <span class="indicator-text">audio</span>
+        <span class="indicator-text">scroll to play</span>
       </div>
 
-      <!-- === SOCIAL BUTTONS (your actual links, minimal style) === -->
+      <!-- === SOCIAL BUTTONS === -->
       <div class="social-section">
-        <a href="https://discord.gg/2PRexHBK" class="social-link discord" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord"></i><span class="link-label">discord</span></a>
-        <a href="https://www.instagram.com/rlyank888?igsh=am10d2EwZ29tY2Fy" class="social-link instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i><span class="link-label">instagram</span></a>
-        <a href="https://youtube.com/@rlyank8" class="social-link youtube" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i><span class="link-label">youtube</span></a>
+        <a href="https://discord.gg/2PRexHBK" class="social-link discord" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-discord"></i>
+          <span class="link-label">discord</span>
+        </a>
+        <a href="https://www.instagram.com/rlyank888?igsh=am10d2EwZ29tY2Fy" class="social-link instagram" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-instagram"></i>
+          <span class="link-label">instagram</span>
+        </a>
+        <a href="https://youtube.com/@rlyank8" class="social-link youtube" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-youtube"></i>
+          <span class="link-label">youtube</span>
+        </a>
       </div>
 
-      <!-- footer (minimal) -->
       <div class="card-footer">rlyank · mmxxv</div>
     </div>
   </div>
 
   <script>
-    /**
-     * BACKGROUND MUSIC CONTROLLER
-     * Automatically starts muted, unmutes on first user interaction
-     * Pure JavaScript, no dependencies
-     */
     (function() {
-      'use strict';
+      const audio = document.getElementById('bgMusic');
+      const indicator = document.getElementById('musicIndicator');
       
-      // Get DOM elements
-      const audioElement = document.getElementById('bgMusic');
-      const musicIndicator = document.getElementById('musicIndicator');
+      if (!audio) return;
       
-      // Exit if audio element doesn't exist
-      if (!audioElement) return;
+      audio.volume = 0.35;
+      audio.muted = true; // start muted for autoplay policy
       
-      // Configuration
-      const VOLUME_LEVEL = 0.35; // 35% volume - subtle background
+      let isActivated = false;
       
-      // Set initial volume
-      audioElement.volume = VOLUME_LEVEL;
-      
-      // State tracking
-      let isMusicActivated = false;
-      let activationAttempts = 0;
-      const MAX_ACTIVATION_ATTEMPTS = 3;
-      
-      /**
-       * Activate music - unmute and play
-       */
-      function activateBackgroundMusic() {
-        // Prevent multiple activations
-        if (isMusicActivated) return;
-        
-        // Increment attempt counter
-        activationAttempts++;
-        
-        // Unmute
-        audioElement.muted = false;
-        
-        // Attempt to play
-        const playPromise = audioElement.play();
-        
-        if (playPromise !== undefined) {
-          playPromise
-            .then(() => {
-              // Successfully playing
-              isMusicActivated = true;
-              musicIndicator.classList.add('active');
-              
-              // Remove event listeners after activation
-              document.removeEventListener('click', activateBackgroundMusic);
-              document.removeEventListener('touchstart', activateBackgroundMusic);
-              document.removeEventListener('keydown', activateBackgroundMusic);
-              
-              // Log success (silent in production)
-              console.debug('Audio activated successfully');
-            })
-            .catch(error => {
-              // Play failed
-              console.debug('Audio activation failed:', error);
-              
-              // If under max attempts, keep listeners active
-              if (activationAttempts >= MAX_ACTIVATION_ATTEMPTS) {
-                // Too many failures, show indicator but don't retry
-                musicIndicator.classList.add('failed');
-              }
-            });
-        }
+      function activateMusic() {
+        if (isActivated) return;
+        audio.muted = false;
+        audio.play()
+          .then(() => {
+            isActivated = true;
+            indicator.classList.add('active');
+            indicator.querySelector('.indicator-text').textContent = 'playing';
+            
+            window.removeEventListener('scroll', activateMusic);
+            window.removeEventListener('wheel', activateMusic);
+            window.removeEventListener('touchmove', activateMusic);
+          })
+          .catch(e => console.log('audio play failed:', e));
       }
       
-      /**
-       * Handle audio errors (file missing, etc.)
-       */
-      function handleAudioError() {
-        console.warn('Audio file missing or unsupported - captcha.mp3 not found');
-        musicIndicator.classList.add('missing');
-        musicIndicator.setAttribute('title', 'audio file missing');
-      }
+      window.addEventListener('scroll', activateMusic, { passive: true });
+      window.addEventListener('wheel', activateMusic, { passive: true });
+      window.addEventListener('touchmove', activateMusic, { passive: true });
       
-      // Add event listeners for first interaction
-      document.addEventListener('click', activateBackgroundMusic);
-      document.addEventListener('touchstart', activateBackgroundMusic);
-      document.addEventListener('keydown', activateBackgroundMusic);
-      
-      // Handle audio errors
-      audioElement.addEventListener('error', handleAudioError);
-      
-      // Handle successful load
-      audioElement.addEventListener('canplaythrough', () => {
-        musicIndicator.classList.remove('missing');
+      audio.addEventListener('error', () => {
+        indicator.classList.add('missing');
+        indicator.querySelector('.indicator-text').textContent = 'missing file';
       });
-      
-      // Reset indicator when audio ends (loops anyway, but just in case)
-      audioElement.addEventListener('ended', () => {
-        // Loop attribute handles this, but reset if needed
-        if (audioElement.loop) {
-          // Nothing to do
-        }
-      });
-      
     })();
   </script>
 </body>
